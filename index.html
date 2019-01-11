@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Курсовой проект learn.javascript.ru</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+
+	<!-- Vendor -->
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+
+	<link rel="stylesheet" href="components/app/app.css">
+	<link rel="stylesheet" href="components/form/form.css">
+	<link rel="stylesheet" href="components/menu/menu.css">
+</head>
+<body>
+
+<div class="app js-app">
+	<div class="js-menu"></div>
+	<div class="js-form"></div>
+</div>
+
+<script src="components/menu/menu.pug.js"></script>
+<script src="components/menu/menu__item/menu__item.pug.js"></script>
+
+<script src="components/form/form.js"></script>
+<script src="components/menu/menu.js"></script>
+<script src="components/app/app.js"></script>
+
+<script>
+	'use strict';
+
+	new window.App({
+		el: document.querySelector('.js-app')
+	});
+</script>
+
+</body>
+</html>
