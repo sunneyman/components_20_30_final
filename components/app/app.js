@@ -6,8 +6,8 @@
 	const Form = window.Form;
 
 	let URL = 'https://components-21-30.firebaseio.com/menu/-Kz5NeJk9exl8TnG0ZZf.json';
-	const URL_alt = '../../resourse/info.json';
-	URL = URL_alt;
+	const URL_mocs = "/mocks/menu.mock.json";
+	URL = URL_mocs;
 
 	/**
 	 * Компонента "Форма"
@@ -73,7 +73,7 @@
 				xhr.addEventListener('load', () => {
 					if (xhr.status === 200) {
 						const result = JSON.parse(xhr.responseText);
-
+						console.log(result);
 						resolve(result);
 					} else {
 						console.error('Что-то пошло не так!');
