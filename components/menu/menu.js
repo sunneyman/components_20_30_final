@@ -43,7 +43,7 @@
 		 * Добавляем элемент меню
 		 * @param {Object} item
 		 */
-		addItem(item) {
+		addItemToMenu(item) {
 			let el = document.createElement('div');
 			el.innerHTML = this.getItemHtml(item, this.data.items.length);
 			el = el.firstElementChild;

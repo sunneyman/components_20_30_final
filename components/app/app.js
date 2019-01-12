@@ -5,10 +5,11 @@
 	const Menu = window.Menu;
 	const Form = window.Form;
 
-	let URL = 'https://components-21-30.firebaseio.com/menu/-Kz5NeJk9exl8TnG0ZZf.json';
-	let URL_DB = 'https://breaking-down-stupidity.firebaseio.com/menu.json'
-	const URL_mocs = "/mocks/menu.mock.json";
-	URL = URL_mocs;
+	// let URL = 'https://components-21-30.firebaseio.com/menu/-Kz5NeJk9exl8TnG0ZZf.json';
+	const URL_DB_forSend_new = 'https://breaking-down-stupidity.firebaseio.com/menu.json';
+	const URL_DB = 'https://breaking-down-stupidity.firebaseio.com/menu/-LW1dPr9iJ2fP_nRcMcf.json'; // # -LW1dPr9iJ2fP_nRcMcf
+	const URL_mocs = '/mocks/menu.mock.json';
+	let URL = URL_mocs;
 
 	/**
 	 * Компонента "Форма"
@@ -38,63 +39,41 @@
 			});
 
 			this.form.on('add', ({detail}) => {
-				this.menu.addItem(detail);
-				this.addItem();
+				this.menu.addItemToMenu(detail);
+				this.addItemToDB();
 			});
 
-			// this.fetchData()
-			// 	.then((result) => {
-			// 		this.menu.setData(result);
-			// 	})
-			// 	.catch((err) => {
-			// 		console.log('ОШИБКА В ПРОМИСЕ');
-			// 	});
-
-			this.fetchDataSendToDb();
-
-			// .then((result) => {
-			// 	this.menu.setData(result);
-			//
-			// 	return this.saveData();
-			// })
-			// .catch((err) => {
-			// 	console.log('ОШИБКА В ПРОМИСЕ');
-			// });
-		}
-
-		addItem() {
-			return this.request('PUT', URL, this.menu.getData());
-		}
-
-		fetchData() {
-			return this.request('GET', URL);
-		}
-
-		fetchDataSendToDb() { // sending data to database
-			const xhr = new XMLHttpRequest();
-
-			xhr.addEventListener('readystatechange', (evt) => {
-				console.log(evt);
-			});
-
-			xhr.addEventListener('load', () => {
-				if (xhr.status === 200) {
-					const result = JSON.parse(xhr.responseText);
-					console.log('result:', result);
+			this.fetchData()
+				.then((result) => {
 					this.menu.setData(result);
-				} else {
-					console.error('Что-то пошло не так!');
-				}
-			});
 
-			xhr.open('GET', '../mocks/menu.mock.json', true);
-
-			xhr.send();
+					/** uncommented lines below were used for adding data from menu.moc.js to database **/
+					// return this.saveData();
+				})
+				// .then((result) => {
+				//
+				// })
+				.catch(() => {
+					console.log('It was a mistake somewhere in promise');
+				});
 		}
 
-		saveData() {
-			return this.request('POST', URL, this.menu.getData());
+		addItemToDB() {
+			return this.request('PUT', URL_DB, this.menu.getData());
 		}
+
+		fetchDataFromMoc() { // recieve data from mocs
+			return this.request('GET', URL_mocs);
+		}
+
+		fetchData() { // recieve data from mocs
+			return this.request('GET', URL_DB);
+		}
+
+		saveData() { // save data to firebase
+			return this.request('POST', URL_DB_forSend_new, this.menu.getData());
+		}
+
 
 		request(method, url, data) {
 			return new Promise((resolve, reject) => {
@@ -117,7 +96,6 @@
 				});
 
 				xhr.open(method, url, true);
-
 
 				const dataJSON = data ? JSON.stringify(data) : null;
 

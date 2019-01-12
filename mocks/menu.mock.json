@@ -20,6 +20,14 @@
     {
       "href": "https://bing.com",
       "anchor": "bing.com"
+    },
+    {
+      "href": "https://learn.com",
+      "anchor": "learn.com"
+    },
+    {
+      "href": "https://javascript.info",
+      "anchor": "javascript.info"
     }
   ]
 }
