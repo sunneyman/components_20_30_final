@@ -1,1 +1,3 @@
 firebase (databases) - useful stuff, worth of checking out
+fetch
+promise
