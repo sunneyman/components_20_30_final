@@ -26,7 +26,7 @@
 			this.onPick = opts.onPick;
 			this.onRemove = opts.onRemove;
 
-			// this.render();
+			this.render();
 			this._initEvents();
 		}
 
@@ -106,8 +106,8 @@
 			 */
 
 			this.el.innerHTML = template({
-				title: this.data.title,
-				items: this.data.items,
+				title: this.data.title || '',
+				items: this.data.items || '',
 			});
 		}
 

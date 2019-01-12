@@ -6,6 +6,7 @@
 	const Form = window.Form;
 
 	let URL = 'https://components-21-30.firebaseio.com/menu/-Kz5NeJk9exl8TnG0ZZf.json';
+	let URL_DB = 'https://breaking-down-stupidity.firebaseio.com/menu.json'
 	const URL_mocs = "/mocks/menu.mock.json";
 	URL = URL_mocs;
 
@@ -41,13 +42,24 @@
 				this.addItem();
 			});
 
-			this.fetchData()
-				.then((result) => {
-					this.menu.setData(result);
-				})
-				.catch((err) => {
-					console.log('ОШИБКА В ПРОМИСЕ');
-				});
+			// this.fetchData()
+			// 	.then((result) => {
+			// 		this.menu.setData(result);
+			// 	})
+			// 	.catch((err) => {
+			// 		console.log('ОШИБКА В ПРОМИСЕ');
+			// 	});
+
+			this.fetchDataSendToDb();
+
+			// .then((result) => {
+			// 	this.menu.setData(result);
+			//
+			// 	return this.saveData();
+			// })
+			// .catch((err) => {
+			// 	console.log('ОШИБКА В ПРОМИСЕ');
+			// });
 		}
 
 		addItem() {
@@ -56,6 +68,28 @@
 
 		fetchData() {
 			return this.request('GET', URL);
+		}
+
+		fetchDataSendToDb() { // sending data to database
+			const xhr = new XMLHttpRequest();
+
+			xhr.addEventListener('readystatechange', (evt) => {
+				console.log(evt);
+			});
+
+			xhr.addEventListener('load', () => {
+				if (xhr.status === 200) {
+					const result = JSON.parse(xhr.responseText);
+					console.log('result:', result);
+					this.menu.setData(result);
+				} else {
+					console.error('Что-то пошло не так!');
+				}
+			});
+
+			xhr.open('GET', '../mocks/menu.mock.json', true);
+
+			xhr.send();
 		}
 
 		saveData() {

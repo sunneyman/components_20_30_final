@@ -2,20 +2,24 @@
   "title": "SINGLE PAGE APPLICATION",
   "items": [
     {
-      "href": "https://vk.com",
-      "anchor": "vk.com"
+      "href": "https:/google.com",
+      "anchor": "google.com"
     },
     {
-      "href": "https://ok.ru",
-      "anchor": "ok.ru"
+      "href": "https://facebook.com",
+      "anchor": "facebook.com"
     },
     {
       "href": "https://yahoo.com",
       "anchor": "yahoo.com"
     },
     {
-      "href": "https://yandex.ru",
-      "anchor": "yandex.ru"
+      "href": "https://twitter.com",
+      "anchor": "twitter.com"
+    },
+    {
+      "href": "https://bing.com",
+      "anchor": "bing.com"
     }
   ]
 }
