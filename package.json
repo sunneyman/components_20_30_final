@@ -7,24 +7,38 @@
     "start": "static-server .",
     "lint": "eslint components/**/*.js",
     "pug": "pug components/{**/**,**}/*.pug --no-debug --client --name-after-file --extension=pug.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marinatells/components_21_30.git"
+    "url": "git+https://github.com/sunneyman/components_20_30_final.git"
   },
   "author": "Marina Titova",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/marinatells/components_21_30/issues"
+    "url": "https://github.com/sunneyman/components_20_30_final/issues"
   },
-  "homepage": "https://github.com/marinatells/components_21_30#readme",
+  "homepage": "https://github.com/sunneyman/components_20_30_final#readme",
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-import": "^1.16.0",
     "pug": "^2.0.3",
     "pug-cli": "^1.0.0-alpha6",
     "static-server": "^2.2.1"
+  },
+  "dependencies": {
+    "ajv": "^6.7.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "css-loader": "^2.1.0",
+    "eslint-plugin-jsx-a11y": "^1.5.5",
+    "eslint-plugin-react": "^5.2.2",
+    "pug-loader": "^2.4.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
   }
 }
